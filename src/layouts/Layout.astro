@@ -1,0 +1,44 @@
+---
+import '../styles/global.css';
+
+const { title } = Astro.props;
+const base = import.meta.env.BASE_URL;
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body class="bg-white text-gray-600 font-sans">
+    <header class="shadow-sm p-4 text-center flex justify-center items-center relative">
+        <h1 class="text-3xl font-extrabold">
+          <a href={`${base}`} class="hover:text-gray-900">
+            Short Thoughts
+          </a>
+        </h1>
+        <a href={`${base}rss.xml`} class="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-600 hover:text-gray-900">
+          <img src={`${base}icons/rss.svg`} alt="RSS Feed" class="w-6 h-6" />
+        </a>
+    </header>
+    <hr />
+    <main class="min-h-screen">
+      <slot />
+    </main>
+    <footer class="text-center p-4 text-gray-400 text-sm mt-8">
+      <p>&copy; {new Date().getFullYear()} Christopher Lopes. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
+<style is:global>
+  @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;800&display=swap');
+  :root {
+    color-scheme: light dark;
+  }
+  html {
+    font-family: system-ui, sans-serif;
+  }
+</style>

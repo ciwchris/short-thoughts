@@ -1,16 +1,28 @@
 ---
+import Layout from "../layouts/Layout.astro";
+import { getCollection, render } from "astro:content";
+import BlogPost from "../layouts/BlogPost.astro";
 
+const allPosts = await getCollection("blog");
+const base = import.meta.env.BASE_URL;
 ---
-
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Short Thoughts">
+  <div class="flex flex-col items-center max-w-prose mx-auto px-4 mt-8">
+    <ul class="w-full">
+      {allPosts.map(async (post) => {
+        const { Content } = await render(post);
+        return (
+        <li class="border-b border-gray-200 py-4">
+          <a href={`${base}blog/${post.slug}/`} class="block text-xl font-semibold hover:text-gray-900">
+            {post.data.title}
+          </a>
+          <div class="prose prose-lg max-w-none">
+              <Content />
+          </div>
+        </li>
+        );
+      })}
+    </ul>
+    
+  </div>
+</Layout>
