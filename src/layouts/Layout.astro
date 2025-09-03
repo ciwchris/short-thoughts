@@ -9,14 +9,14 @@ const base = import.meta.env.BASE_URL;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
   <body class="bg-white text-gray-600 font-sans">
     <header class="shadow-sm p-4 text-center flex justify-center items-center relative">
         <h1 class="text-3xl text-gray-500">
-          <a href={`${base}`} class="hover:text-gray-900">
+          <a href={base} class="hover:text-gray-900">
             Short Thoughts
           </a>
         </h1>
