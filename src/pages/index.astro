@@ -15,10 +15,14 @@ const base = import.meta.env.BASE_URL;
         const { Content } = await render(post);
         return (
         <li class="border-b border-gray-200 py-4">
-          <a href={`${base}blog/${post.slug}/`} class="block text-xl font-semibold hover:text-gray-900">
-            {post.data.title}
-          </a>
-          <div class="prose prose-lg max-w-none">
+          <div class="flex flex-col items-center">
+            <a
+                href="/short-thoughts/blog/run-back-the-tape-to-prove-ones-self-righteousness/"
+                class="max-w-[35ch] font-mansalva inline max-w-prose text-left">
+              Run back the tape to prove one's self-righteousness
+            </a>
+          </div>  
+          <div class="prose max-w-none pt-6">
               <Content />
           </div>
         </li>

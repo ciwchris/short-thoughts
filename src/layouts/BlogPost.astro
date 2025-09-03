@@ -5,8 +5,10 @@ const base = import.meta.env.BASE_URL;
 ---
 <Layout title={frontmatter.title}>
   <div class="max-w-prose mx-auto px-4 mt-8 mb-12">
-    <h1 class="text-3xl font-bold mb-2">{frontmatter.title}</h1>
-    <div class="prose prose-lg max-w-none">
+    <div class="flex flex-col items-center">
+      <h2 class="text-2xl font-bold mb-2 font-mansalva max-w-[35ch]">{frontmatter.title}</h2>
+    </div>
+    <div class="prose prose-lg max-w-none pt-6">
       <slot />
     </div>
 

@@ -7,6 +7,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Merriweather', ...defaultTheme.fontFamily.sans],
+        mansalva: ['Mansalva', 'cursive'],
       },
     }
   },
