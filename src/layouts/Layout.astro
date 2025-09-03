@@ -20,9 +20,14 @@ const base = import.meta.env.BASE_URL;
             Short Thoughts
           </a>
         </h1>
-        <a href={`${base}rss.xml`} class="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-600 hover:text-gray-900">
-          <img src={`${base}icons/rss.svg`} alt="RSS Feed" class="w-6 h-6" />
-        </a>
+        <div class="absolute right-4 top-1/2 transform -translate-y-1/2 flex space-x-2">
+          <a href={`${base}tags`} class="text-gray-600 hover:text-gray-900">
+            <img src={`${base}icons/tag.svg`} alt="Tags" class="w-6 h-6" />
+          </a>
+          <a href={`${base}rss.xml`} class="text-gray-600 hover:text-gray-900 pl-5">
+            <img src={`${base}icons/rss.svg`} alt="RSS Feed" class="w-6 h-6" />
+          </a>
+        </div>
     </header>
     <hr />
     <main class="min-h-screen">

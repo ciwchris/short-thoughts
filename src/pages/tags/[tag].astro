@@ -1,0 +1,45 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const allPosts = await getCollection('blog');
+  const allTags = allPosts.flatMap(post => post.data.tags || []);
+  const uniqueTags = [...new Set(allTags)];
+
+  return uniqueTags.map(tag => {
+    return {
+      params: { tag: tag },
+      props: { tag: tag }
+    };
+  });
+}
+
+const { tag } = Astro.props;
+const allPosts = await getCollection('blog');
+const filteredPosts = allPosts.filter(post => post.data.tags?.includes(tag));
+const base = import.meta.env.BASE_URL;
+---
+<Layout title={`Posts tagged with "${tag}"`}>
+  <div class="max-w-prose mx-auto px-4 mt-8 mb-12">
+    <h1 class="text-3xl font-bold mb-4">Posts tagged with "{tag}"</h1>
+    <ul class="w-full">
+      {filteredPosts.map(async (post) => {
+        const { Content } = await render(post);
+        return (
+          <li class="border-b border-gray-200 py-4">
+            <a href={`${base}blog/${post.slug}/`} class="block text-xl font-semibold hover:text-gray-900">
+              {post.data.title}
+            </a>
+            <p class="text-gray-500 text-sm mt-1">
+              {new Date(post.data.pubDate).toLocaleDateString()}
+            </p>
+            <div class="prose prose-lg max-w-none mt-2">
+              <Content />
+            </div>
+          </li>
+        );
+      })}
+    </ul>
+  </div>
+</Layout>
