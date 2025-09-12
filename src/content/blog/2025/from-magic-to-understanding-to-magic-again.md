@@ -1,6 +1,6 @@
 ---
 title: |
-    From magic to understanding to back to magic
+    From magic to understanding to magic again
 pubDate: 2025-09-12
 description: |
     As AI performs more tasks without our involvement, nor understanding, we are returning to the
