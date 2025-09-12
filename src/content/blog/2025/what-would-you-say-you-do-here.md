@@ -3,7 +3,7 @@ title: |
     What would you say… you do here?
 pubDate: 2025-09-12
 description: |
-	Have software developers become the new product managers, À la Office Space
+    Have software developers become the new product managers, À la Office Space
 tags: ['ai', 'software-developer', 'project-management']
 ---
 A constant complaint I've heard from software developers is that there isn't a product owner. No one
