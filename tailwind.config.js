@@ -9,6 +9,9 @@ export default {
         sans: ['Merriweather', ...defaultTheme.fontFamily.sans],
         mansalva: ['Mansalva', 'cursive'],
       },
+      screens: {
+        'xs': '480px',
+      },
     }
   },
   plugins: [

@@ -17,13 +17,13 @@ const showArchiveLink = allPosts.length > 0 && Astro.url.pathname === base;
     <title>{title}</title>
   </head>
   <body class="bg-white text-gray-600 font-sans">
-    <header class="shadow-sm p-4 text-center flex justify-center items-center relative">
+    <header class="shadow-sm p-4 text-center flex flex-col xs:flex-row xs:justify-center items-center xs:relative">
         <h1 class="text-3xl text-gray-500">
           <a href={base} class="hover:text-gray-900">
             Short Thoughts
           </a>
         </h1>
-        <div class="absolute right-4 top-1/2 transform -translate-y-1/2 flex space-x-2">
+        <div class="w-full flex justify-end space-x-2 mt-4 xs:mt-0 xs:w-auto xs:absolute xs:right-4 xs:top-1/2 xs:transform xs:-translate-y-1/2">
           <a href={`${base}tags`} class="text-gray-600 hover:text-gray-900">
             <img src={`${base}icons/tag.svg`} alt="Tags" class="w-6 h-6" />
           </a>
