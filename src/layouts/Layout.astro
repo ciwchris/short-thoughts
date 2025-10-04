@@ -1,8 +1,11 @@
 ---
+import { getCollection } from 'astro:content';
 import '../styles/global.css';
 
 const { title } = Astro.props;
 const base = import.meta.env.BASE_URL;
+const allPosts = await getCollection('blog');
+const showArchiveLink = allPosts.length > 0 && Astro.url.pathname === base;
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -34,6 +37,12 @@ const base = import.meta.env.BASE_URL;
       <slot />
     </main>
     <footer class="text-center p-4 text-gray-400 text-sm mt-8">
+      {showArchiveLink &&
+        <a href={`${base}archive`} class="inline-flex items-center text-lg text-gray-600 hover:text-gray-900 mb-4">
+          <img src={`${base}icons/archive.svg`} alt="Archive" class="w-6 h-6 mr-2" />
+          Archive
+        </a>
+      }
       <p>&copy; {new Date().getFullYear()} Christopher Lopes. All rights reserved.</p>
     </footer>
   </body>
