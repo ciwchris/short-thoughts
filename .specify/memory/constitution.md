@@ -22,9 +22,6 @@ All blog content is created and managed as Markdown files in the `src/content/bl
 ### Principle 3: Styling
 All styling must be done using Tailwind CSS. Global styles are defined in `src/styles/global.css`, but should be used sparingly.
 
-### Principle 4: Base Path
-All links must reference the base path of the site. This ensures that the site works correctly when deployed to a subdirectory.
-
 ## Governance
 
 This Constitution is the single source of truth for project principles. All development must adhere to it. Amendments require a pull request and approval from the project owner.

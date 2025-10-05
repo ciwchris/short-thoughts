@@ -3,32 +3,31 @@ import { getCollection } from 'astro:content';
 import '../styles/global.css';
 
 const { title } = Astro.props;
-const base = import.meta.env.BASE_URL;
 const allPosts = await getCollection('blog');
-const showArchiveLink = allPosts.length > 0 && Astro.url.pathname === base;
+const showArchiveLink = allPosts.length > 0 && Astro.url.pathname === '/';
 ---
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
+    <link rel="icon" type="image/svg+xml" href={`favicon.svg`} />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
   <body class="bg-white text-gray-600 font-sans">
     <header class="shadow-sm p-4 text-center flex flex-col xs:flex-row xs:justify-center items-center xs:relative">
         <h1 class="text-3xl text-gray-500">
-          <a href={base} class="hover:text-gray-900">
+          <a href="/" class="hover:text-gray-900">
             Short Thoughts
           </a>
         </h1>
         <div class="w-full flex justify-end space-x-2 mt-4 xs:mt-0 xs:w-auto xs:absolute xs:right-4 xs:top-1/2 xs:transform xs:-translate-y-1/2">
-          <a href={`${base}tags`} class="text-gray-600 hover:text-gray-900">
-            <img src={`${base}icons/tag.svg`} alt="Tags" class="w-6 h-6" />
+          <a href={`tags`} class="text-gray-600 hover:text-gray-900">
+            <img src={`/icons/tag.svg`} alt="Tags" class="w-6 h-6" />
           </a>
-          <a href={`${base}rss.xml`} class="text-gray-600 hover:text-gray-900 pl-5">
-            <img src={`${base}icons/rss.svg`} alt="RSS Feed" class="w-6 h-6" />
+          <a href={`rss.xml`} class="text-gray-600 hover:text-gray-900 pl-5">
+            <img src={`/icons/rss.svg`} alt="RSS Feed" class="w-6 h-6" />
           </a>
         </div>
     </header>
@@ -38,8 +37,8 @@ const showArchiveLink = allPosts.length > 0 && Astro.url.pathname === base;
     </main>
     <footer class="text-center p-4 text-gray-400 text-sm mt-8">
       {showArchiveLink &&
-        <a href={`${base}archive`} class="inline-flex items-center text-lg text-gray-600 hover:text-gray-900 mb-4">
-          <img src={`${base}icons/archive.svg`} alt="Archive" class="w-6 h-6 mr-2" />
+        <a href={`archive`} class="inline-flex items-center text-lg text-gray-600 hover:text-gray-900 mb-4">
+          <img src={`icons/archive.svg`} alt="Archive" class="w-6 h-6 mr-2" />
           Archive
         </a>
       }
