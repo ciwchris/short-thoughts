@@ -1,10 +1,10 @@
 ---
 title: |
     Quoting Andrej Karpathy regarding LLM intelligence Animals vs Ghosts
-pubDate: 2025-09-12
+pubDate: 2025-10-21
 description: |
     Quoting Andrej Karpathy regarding LLM intelligence Animals vs Ghosts
-tags: ['ai', 'software-developer', 'project-management']
+tags: ['ai', 'intelligence', 'human', 'society']
 ---
 [Quoting Andrej Karpathy regarding LLM intelligence Animals vs Ghosts](https://x.com/karpathy/status/1979644538185752935)
 
