@@ -1,3 +1,4 @@
+---
 title: |
     Quoting Andrej Karpathy on Agency
 pubDate: 2025-12-01
