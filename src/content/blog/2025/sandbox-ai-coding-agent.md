@@ -46,7 +46,7 @@ sudo restorecon -Rv sandbox-test
 ## Creating a VM
 
 A configuration file can be used so that the VM is created with needed dependencies, as well as
-other VM settings.
+other VM settings. (dotnet-sandbox.yaml)
 
 ```yaml title="dotnet-sandbox.yaml"
 images:
@@ -95,7 +95,7 @@ git config --global user.email "agent@internal.sandbox"
 ```
 
 Codex cannot push to git remotes without access, but to further enforce Codex from being able to
-push a rule can be added:
+push a rule can be added: (.rules)
 
 ```bash title=".rules"
 {
