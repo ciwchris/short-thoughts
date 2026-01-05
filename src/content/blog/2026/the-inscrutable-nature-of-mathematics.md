@@ -22,3 +22,15 @@ Mathematics to me is like Perl. Instead of welcoming people into the world of ma
 I was reviewing Bayes' Theorem. At first site the equation appears intimidating. But if you understand the equation it is fairly simple. Because of the way it is written our brains needs to go through several layers of translation, mapping each piece to their meaning, which is then mapped to the scenario at hand. It seems better to me to present the equation written out, have one less translation, and less prior knowledge needed. Others unfamiliar with the equation will immediately gain an initial understanding of what it means, instead of feeling defeat.
 
 > Probability of A given B = Likelihood B assuming A * Prior belief about A / Sum of likelihood of B for all scenarios
+
+**Edit:**
+
+It seems David Bessis is of a similar mind, [A Mind-Blowing Way of Looking at Math (with David Bessis)](https://www.econtalk.org/a-mind-blowing-way-of-looking-at-math-with-david-bessis/).
+
+> The issue with mathematics is it's something that manifests itself in a horrible way. It's on paper, on the blackboard; you see cryptic symbols, formulas; and this is impossible to make sense of. But, how you interact with that--how you gradually tune your intuition to build up meaning for the symbols--is the real art of mathematics.
+
+> Math books are written in a certain way that follows a certain logic that is called logical formalism. It's a kind of recipe for building mathematical objects, but the words make no sense to you when you open them, so you can't read them.
+
+> That was what I call the tourist menu. He was showing me the tourist menu with the kind of very formal dishes that nobody really wants to eat, but they look like it's a fancy place. And, he was presenting his research mathematics the same exact way.
+> 
+> And, when I told him, 'Please repeat. Repeat it as if I had some disability, as if my brain was damaged. Because I am jet-lagged, I'm tired, whatever, I'm stupid, I'm a slow thinker. Please be as simple as you can, I don't understand anything.' So, when I did that, I gave him the permission to serve me the true menu, the thing for the locals--how he really himself looked at his mathematics. And he was using different words and describing the situation using very simple images, examples. And it was a different thing. 
