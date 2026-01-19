@@ -6,6 +6,11 @@ description: |
   Reflections on David Bessis's discussion of heritability and how the distinction between potential
   and actual intelligence informs a comparison of human and AI thinking.
 tags: ['human', 'ai', 'intelligence', 'genetics', 'iq']
+syndication:
+  - name: BlueSky
+    url: https://bsky.app/profile/christopherlopes.bsky.social/post/3mcsij6z5722w
+  - name: LinkedIn
+    url: https://www.linkedin.com/pulse/potential-actual-intelligence-how-human-thinking-differs-lopes-efttc
 ---
 
 After listening to the EconTalk podcast episode [Nature, Nurture, and Identical Twins (with David
@@ -42,6 +47,3 @@ their actual intelligence.
 
 In the end an AI’s intelligence is hereditary rather than blank‑slate, and that leads to a very
 different form of thinking. AI thinking is not human thinking.
-
-_Syndicated to: [BlueSky](https://bsky.app/profile/christopherlopes.bsky.social/post/3mcsij6z5722w) |
-[LinkedIn](https://www.linkedin.com/pulse/potential-actual-intelligence-how-human-thinking-differs-lopes-efttc)_

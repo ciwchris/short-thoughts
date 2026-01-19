@@ -21,6 +21,18 @@ const { frontmatter } = Astro.props;
 
     </p>
 
+    {frontmatter.syndication && frontmatter.syndication.length > 0 && (
+      <div class="text-gray-500 text-sm mt-4">
+        Syndicated to: 
+        {frontmatter.syndication.map((link: { name: string; url: string; }, index: number) => (
+          <span>
+            {index > 0 && " | "}
+            <a href={link.url} class="underline hover:text-gray-900">{link.name}</a>
+          </span>
+        ))}
+      </div>
+    )}
+
     {frontmatter.tags && frontmatter.tags.length > 0 && (
       <div class="mt-2">
         <ul class="flex flex-wrap gap-2">
