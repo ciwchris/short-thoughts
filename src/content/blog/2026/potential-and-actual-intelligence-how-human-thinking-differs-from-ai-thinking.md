@@ -42,3 +42,6 @@ their actual intelligence.
 
 In the end an AI’s intelligence is hereditary rather than blank‑slate, and that leads to a very
 different form of thinking. AI thinking is not human thinking.
+
+_Syndicated to: [BlueSky](https://bsky.app/profile/christopherlopes.bsky.social/post/3mcsij6z5722w) |
+[LinkedIn](https://www.linkedin.com/pulse/potential-actual-intelligence-how-human-thinking-differs-lopes-efttc)_
