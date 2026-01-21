@@ -8,6 +8,11 @@ description: |
   Industrial Revolution and cheap land created a lasting divide, I wonder if we are losing a moment
   to change the future.
 tags: ['ai', 'society', 'humanity', 'reflection']
+syndication:
+  - name: BlueSky
+    url: https://bsky.app/profile/christopherlopes.bsky.social/post/3mcx4etj5lk2i
+  - name: LinkedIn
+    url: https://www.linkedin.com/pulse/past-cannot-changed-i-wonder-we-losing-moment-change-future-lopes-7nmac
 ---
 This Martin Luther King Jr. Day, I found myself reflecting on the immense gap of privilege created
 during the era of American slavery. Slavery existed globally, but its impact on Black Americans was
