@@ -2,33 +2,49 @@
 import Layout from "../layouts/Layout.astro";
 import { getCollection, render } from "astro:content";
 
-const allPosts = (await getCollection("blog")).sort(
-  (a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
-).slice(0, 20);
+const allPosts = (await getCollection("blog"))
+  .sort(
+    (a, b) =>
+      new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf(),
+  )
+  .slice(0, 20);
+
+const postsWithContent = await Promise.all(
+  allPosts.map(async (post) => {
+    const { Content } = await render(post);
+    const dateLabel = new Date(post.data.pubDate).toLocaleDateString("en-US", {
+      timeZone: "UTC",
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    });
+    return { post, Content, dateLabel };
+  }),
+);
 ---
+
 <Layout title="Short Thoughts">
-  <div class="flex flex-col items-center max-w-prose mx-auto px-4 mt-8">
-    <ul class="w-full">
-      {allPosts.map(async (post) => {
-        const { Content } = await render(post);
-        return (
-        <li class="border-b border-gray-200 py-4">
-          <div class="flex flex-col items-center">
-            <div class="font-mansalva max-w-[35ch]">
+  <div class="max-w-4xl mx-auto px-6 sm:px-14 pt-16 pb-16">
+    <div>
+      {
+        postsWithContent.map(({ post, Content }, i) => (
+          <article
+            class:list={["pb-14", i > 0 && "pt-14 border-t border-rule"]}
+          >
+            <h2 class="font-bold text-[24px] leading-[1.18] mt-0 mb-4 tracking-[-0.022em]">
               <a
-                  href={`/blog/${post.slug}`}
-                  class="inline max-w-prose text-left">
-                  {post.data.title}
+                href={`/blog/${post.slug}`}
+                class="text-ink no-underline hover:text-ink-soft transition-colors"
+              >
+                {post.data.title}
               </a>
-            </div>  
-          </div>  
-          <div class="prose max-w-none pt-6">
+            </h2>
+            <div class="prose max-w-none text-[16px] leading-[1.65] text-ink">
               <Content />
-          </div>
-        </li>
-        );
-      })}
-    </ul>
-    
+            </div>
+          </article>
+        ))
+      }
+    </div>
   </div>
 </Layout>

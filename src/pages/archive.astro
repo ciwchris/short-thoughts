@@ -1,33 +1,70 @@
 ---
-import { getCollection } from 'astro:content';
-import Layout from '../layouts/Layout.astro';
-const posts = (await getCollection('blog')).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+import { getCollection } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+
+const posts = (await getCollection("blog")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
-const postsByYear = posts.reduce((acc, post) => {
-  const year = post.data.pubDate.getFullYear();
-  if (!acc[year]) {
-    acc[year] = [];
-  }
-  acc[year].push(post);
-  return acc;
-}, {});
+
+const postsByYear: Record<number, typeof posts> = posts.reduce(
+  (acc, post) => {
+    const year = post.data.pubDate.getFullYear();
+    if (!acc[year]) acc[year] = [];
+    acc[year].push(post);
+    return acc;
+  },
+  {} as Record<number, typeof posts>,
+);
+
+const years = Object.keys(postsByYear)
+  .map(Number)
+  .sort((a, b) => b - a);
 ---
-<Layout title="Archive">
-  <div class="flex flex-col items-center max-w-prose mx-auto px-4 mt-8">
-    <h1 class="text-3xl font-bold mb-8">Archive</h1>
+
+<Layout title="Archive — Short Thoughts">
+  <div class="max-w-4xl mx-auto px-6 sm:px-14 pt-[72px] pb-16">
+    <h1
+      class="font-bold text-[56px] leading-none tracking-[-0.035em] mb-14 mt-0"
+    >
+      Archive
+    </h1>
     {
-      Object.entries(postsByYear).map(([year, posts]) => (
-        <div class="w-full mb-8">
-          <h2 class="text-2xl font-bold mb-4">{year}</h2>
-          <ul class="list-disc pl-5">
-            {posts.map((post) => (
-              <li class="mb-2">
-                <a href={`/blog/${post.slug}`} class="text-lg text-gray-600 hover:text-gray-900">{post.data.title}</a>
-              </li>
-            ))}
-          </ul>
-        </div>
+      years.map((year) => (
+        <section class="mb-7">
+          <div class="grid gap-6" style="grid-template-columns: 110px 1fr">
+            <div class="font-bold text-[44px] leading-none tracking-[-0.03em] text-ink-softer tabular-nums">
+              {year}
+            </div>
+            <div>
+              {postsByYear[year].map((post, i) => {
+                const shortDate = new Date(
+                  post.data.pubDate,
+                ).toLocaleDateString("en-US", {
+                  timeZone: "UTC",
+                  month: "short",
+                  day: "numeric",
+                });
+                return (
+                  <a
+                    href={`/blog/${post.slug}`}
+                    class:list={[
+                      "grid gap-4 py-3 text-ink no-underline hover:text-ink-soft transition-colors",
+                      i > 0 && "border-t border-rule-soft",
+                    ]}
+                    style="grid-template-columns: 74px 1fr; align-items: baseline"
+                  >
+                    <span class="text-[12px] text-ink-soft font-medium tabular-nums">
+                      {shortDate}
+                    </span>
+                    <span class="text-[15px] font-medium leading-[1.4]">
+                      {post.data.title}
+                    </span>
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+        </section>
       ))
     }
   </div>

@@ -1,22 +1,32 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import { getCollection } from 'astro:content';
+import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
 
-const allPosts = await getCollection('blog');
-const allTags = allPosts.flatMap(post => post.data.tags || []);
-const uniqueTags = [...new Set(allTags)];
+const allPosts = await getCollection("blog");
+const allTags = allPosts.flatMap((post) => post.data.tags || []);
+const uniqueTags = [...new Set(allTags)].sort();
 ---
-<Layout title="All Tags">
-  <div class="max-w-prose mx-auto px-4 mt-8 mb-12">
-    <h1 class="text-3xl font-bold mb-4">All Tags</h1>
-    <ul class="flex flex-wrap gap-2">
-      {uniqueTags.map(tag => (
-        <li>
-          <a href={`/tags/${tag}/`} class="text-gray-500 text-sm hover:text-gray-900">
-            {tag}
-          </a>
-        </li>
-      ))}
+
+<Layout title="Tags — Short Thoughts">
+  <div class="max-w-4xl mx-auto px-6 sm:px-14 pt-[72px] pb-16">
+    <h1
+      class="font-bold text-[56px] leading-none tracking-[-0.035em] mb-14 mt-0"
+    >
+      Tags
+    </h1>
+    <ul class="flex flex-wrap gap-3 list-none p-0 m-0">
+      {
+        uniqueTags.map((tag) => (
+          <li>
+            <a
+              href={`/tags/${tag}/`}
+              class="text-[14px] font-medium text-ink-soft no-underline hover:text-ink transition-colors"
+            >
+              #{tag}
+            </a>
+          </li>
+        ))
+      }
     </ul>
   </div>
 </Layout>

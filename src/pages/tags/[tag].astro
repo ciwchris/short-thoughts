@@ -1,5 +1,5 @@
 ---
-import { getCollection, render } from 'astro:content';
+import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 
 export async function getStaticPaths() {
@@ -7,12 +7,10 @@ export async function getStaticPaths() {
   const allTags = allPosts.flatMap(post => post.data.tags || []);
   const uniqueTags = [...new Set(allTags)];
 
-  return uniqueTags.map(tag => {
-    return {
-      params: { tag: tag },
-      props: { tag: tag }
-    };
-  });
+  return uniqueTags.map(tag => ({
+    params: { tag },
+    props: { tag },
+  }));
 }
 
 const { tag } = Astro.props;
@@ -21,26 +19,30 @@ const filteredPosts = allPosts
   .filter(post => post.data.tags?.includes(tag))
   .sort((a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf());
 ---
-<Layout title={`Posts tagged with "${tag}"`}>
-  <div class="max-w-prose mx-auto px-4 mt-8 mb-12">
-    <h1 class="text-3xl font-bold mb-4">Posts tagged with "{tag}"</h1>
-    <ul class="w-full">
-      {filteredPosts.map(async (post) => {
-        const { Content } = await render(post);
+<Layout title={`#${tag} — Short Thoughts`}>
+  <div class="max-w-4xl mx-auto px-6 sm:px-14 pt-[72px] pb-16">
+    <h1 class="font-bold text-[56px] leading-none tracking-[-0.035em] mb-14 mt-0">
+      #{tag}
+    </h1>
+    <div>
+      {filteredPosts.map((post, i) => {
+        const shortDate = new Date(post.data.pubDate).toLocaleDateString('en-US', {
+          timeZone: 'UTC', month: 'short', day: 'numeric', year: 'numeric',
+        });
         return (
-          <li class="border-b border-gray-200 py-4">
-            <a href={`/blog/${post.slug}/`} class="block text-xl font-semibold hover:text-gray-900">
-              {post.data.title}
-            </a>
-            <p class="text-gray-500 text-sm mt-1">
-              {new Date(post.data.pubDate).toLocaleDateString()}
-            </p>
-            <div class="prose prose-lg max-w-none mt-2">
-              <Content />
-            </div>
-          </li>
+          <a
+            href={`/blog/${post.slug}/`}
+            class:list={[
+              'grid gap-4 py-3 text-ink no-underline hover:text-ink-soft transition-colors',
+              i > 0 && 'border-t border-rule-soft',
+            ]}
+            style="grid-template-columns: 100px 1fr; align-items: baseline"
+          >
+            <span class="text-[12px] text-ink-soft font-medium tabular-nums">{shortDate}</span>
+            <span class="text-[15px] font-medium leading-[1.4]">{post.data.title}</span>
+          </a>
         );
       })}
-    </ul>
+    </div>
   </div>
 </Layout>
